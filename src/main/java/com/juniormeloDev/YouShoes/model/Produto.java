@@ -26,9 +26,6 @@ public class Produto {
     @ManyToMany(cascade = CascadeType.ALL)
     List< Category> category;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @Getter
-    @Setter
-    private Stock stock;
+
 
 }
