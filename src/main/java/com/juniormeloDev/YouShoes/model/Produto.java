@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
+
 @Entity(name = "tb-produto")
 public class Produto {
     @Id
@@ -19,11 +22,13 @@ public class Produto {
     private Double price;
     @Getter
     @Setter
-    private Stock stock;
+    private String description;
+    @ManyToMany(cascade = CascadeType.ALL)
+    List< Category> category;
+
+    @OneToOne(cascade = CascadeType.ALL)
     @Getter
     @Setter
-    private String description;
-    @ManyToMany
-    @JoinColumn(name ="category_id")
-    private Category category;
+    private Stock stock;
+
 }
