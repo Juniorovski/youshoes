@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -23,9 +24,13 @@ public class Produto {
     @Getter
     @Setter
     private String description;
-    @ManyToMany(cascade = CascadeType.ALL)
-    List< Category> category;
-
-
+    @Getter
+    @Setter
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+     private List<Category>  category;
+    @OneToOne(cascade = CascadeType.ALL)
+    @Getter
+    @Setter
+    private Stock stock;
 
 }

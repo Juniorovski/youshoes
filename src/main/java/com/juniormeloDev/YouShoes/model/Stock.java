@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 public class Stock {
     @Id
@@ -16,8 +14,5 @@ public class Stock {
     @Getter
     @Setter
     private Integer amount;
-    @OneToOne(cascade = CascadeType.ALL)
-    @Getter
-    @Setter
-    private Produto produto;
+
 }
