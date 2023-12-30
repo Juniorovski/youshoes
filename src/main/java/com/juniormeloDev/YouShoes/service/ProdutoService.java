@@ -21,8 +21,16 @@ public class ProdutoService {
 
    }
    public List<Produto> update(Produto produto){
-       repository.save(produto);
-       return null;
+
+        Produto entity = repository.findById(produto.getId())
+                        .orElseThrow((() -> new RuntimeException("No records found for this ID!")));
+                  entity.setNameProduto(produto.getNameProduto());
+                  entity.setPrice(produto.getPrice());
+                  entity.setDescription(produto.getDescription());
+                  entity.setCategory( produto.getCategory());
+                  entity.setStock(produto.getStock());
+         repository.save(produto);
+        return null;
     }
     public List<Produto>delete(Long id){
         repository.deleteById(id);
